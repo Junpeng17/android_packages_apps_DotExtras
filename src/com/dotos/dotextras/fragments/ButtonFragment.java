@@ -3,12 +3,20 @@ package com.dotos.dotextras.fragments;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.res.Resources;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.ListPreference;
+import android.preference.SwitchPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+
+import org.cyanogenmod.internal.util.QSUtils;
 
 import com.dotos.R;
 
@@ -16,8 +24,11 @@ import com.dotos.R;
 public class ButtonFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
 
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String KEY_TORCH_LONG_PRESS_POWER_GESTURE =
+            "torch_long_press_power_gesture";
 
     private ListPreference mVolumeKeyCursorControl;
+    private SwitchPreference mTorchLongPressPowerGesture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +42,20 @@ public class ButtonFragment extends PreferenceFragment implements Preference.OnP
                 Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
         mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
                 cursorControlAction);
+
+	// Long press power while display is off to activate torchlight
+        mTorchLongPressPowerGesture =
+                (SwitchPreference) findPreference(KEY_TORCH_LONG_PRESS_POWER_GESTURE);
+
+	mHandler = new Handler();
+
+        if (hasPowerKey) {
+            if (!QSUtils.deviceSupportsFlashLight(getActivity())) {
+                powerCategory.removePreference(mTorchLongPressPowerGesture);
+            }
+        } else {
+            prefScreen.removePreference(powerCategory);
+        }
 
     }
 

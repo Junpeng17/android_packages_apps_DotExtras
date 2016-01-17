@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-		  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+		  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+		  xmlns:cm="http://schemas.android.com/apk/res/cyanogenmod.platform">
 
     <PreferenceCategory android:title="Buttons">
 
@@ -11,6 +12,13 @@
         android:entries="@array/volbtn_cursor_control_entries"
         android:entryValues="@array/volbtn_cursor_control_values"
         android:persistent="false" />
+
+    <com.dotos.dotextras.preferences.CMSystemSettingSwitchPreference
+            android:key="torch_long_press_power_gesture"
+            android:title="@string/torch_long_press_power_gesture_title"
+            android:summary="@string/torch_long_press_power_gesture_desc"
+            android:defaultValue="false"
+            cm:requiresConfig="@*android:bool/config_supportLongPressPowerWhenNonInteractive" />
 	
     </PreferenceCategory>
 </PreferenceScreen>

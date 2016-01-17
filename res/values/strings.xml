@@ -101,6 +101,9 @@
     <string name="qs_columns_title">No. of Columns</string>
     <string name="qs_columns_rows_title">Adjust the number of rows and columns</string>
 
+    <string name="torch_long_press_power_gesture_title">Long-press power button for torch</string>
+    <string name="torch_long_press_power_gesture_desc">Activate the torch by long-pressing the power button while the display is off</string>
+
 <!-- MISC SECTION -->
     <!-- Disable FC notifications -->
     <string name="disable_fc_notifications_title">Disable force close</string>
