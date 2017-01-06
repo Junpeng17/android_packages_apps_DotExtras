@@ -120,6 +120,8 @@
         <item>2</item>
     </string-array>
 
+<!-- QS SECTION -->
+
     <!-- Quick pulldown -->
     <string-array name="status_bar_quick_qs_pulldown_entries" translatable="false">
         <item>@string/status_bar_quick_qs_pulldown_off</item>
@@ -182,6 +184,17 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
+    </string-array>
+
+<!-- Header options -->
+    <string-array name="custom_header_provider_entries" translatable="false">
+        <item>@string/daylight_header_provider_title</item>
+        <item>@string/static_header_provider_title</item>
+    </string-array>
+
+    <string-array name="custom_header_provider_values" translatable="false">
+        <item>@string/daylight_header_provider</item>
+        <item>@string/static_header_provider</item>
     </string-array>
 
 </resources>
