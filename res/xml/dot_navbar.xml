@@ -2,6 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="Navbar">
-
+    	<PreferenceScreen
+            android:key="button_settings"
+            android:title="@string/button_pref_title">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="org.cyanogenmod.cmparts"
+                android:targetClass="org.cyanogenmod.cmparts.input.ButtonSettings">
+            </intent>
+        </PreferenceScreen>
     </PreferenceCategory>
 </PreferenceScreen>
